@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Countdown</title>
+</head>
+<style>
+	body {
+		font-family: fantasy;
+		font-size: 2rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.tag {
+		color: seagreen;
+		background-color: orange;
+		width: 30px;
+		height: 30px;
+	}
+</style>
+<body>
+	<h1>Countdown</h1>
+	<ul></ul>
+	<script>
+		const ul = document.querySelector('ul');
+
+		const setUp = () => {
+			[1,2,3,4,5].forEach( ele => {
+				const li = document.createElement('li')
+				li.innerHTML = ele
+				ul.appendChild(li)
+			})
+			countDown(0)
+		}
+	
+		const countDown = () => {
+			const li = ul.lastChild
+			li.classList.add('tag')
+			setTimeout(() => {
+				ul.removeChild(li)
+				if(ul.children.length) {
+					countDown()
+				} else {
+					setUp()
+				}
+			}, 1000)
+		}
+		//setUp()
+
+		const elems = collect()
+		elems.forEach(item => {
+			console.log(item.tagName())
+		})
+	</script>
+</body>
+</html>
